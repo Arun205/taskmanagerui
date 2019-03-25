@@ -1,0 +1,13 @@
+<div class="card header fontcolor noborder bgdarker">
+  <div class="card-body">
+    Task Manager
+  </div>
+</div>
+<div class="card noborder">
+  <div class="card-body selectbar bglight">
+    <nav class="nav justify-content-center">
+      <a class="nav-link active fontcolor" [ngClass]="{'selectborder': addtask}" (click)="selected('add')" routerLink="/addtask">Add Task</a>
+      <a class="nav-link fontcolor" [ngClass]="{'selectborder': !addtask}" (click)="selected('view')" routerLink="/viewtask">View Task</a>
+    </nav>
+  </div>
+</div>

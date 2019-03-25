@@ -1,0 +1,42 @@
+<div class="row" style="margin: 10px">
+      <div class="col-md-2 label" style="max-width: 125px;">
+      Task
+      </div>
+      <div class="col-md-4">
+        <input type="text" class="form-control inputbox" placeholder="Task" [(ngModel)]="task">
+      </div>
+      <div class="col-md-1 label" style="max-width: 100px; padding: 0px">
+      Parent Task
+      </div>
+      <div class="col-md-5">
+        <input type="text" class="form-control inputbox" placeholder="Parent Task" [(ngModel)]="parentTask">
+      </div>
+    </div>
+    <br>
+
+    <div class="row" style="margin: 10px">
+      <div class="col-md-2 label" style="max-width: 125px;">
+      Priority From
+      </div>
+      <div class="col-md-1">
+        <input type="text" class="form-control inputbox" [(ngModel)]="task">
+      </div>
+      <div class="col-md-2 label">
+      Priority To
+      </div>
+      <div class="col-md-1">
+        <input type="text" class="form-control inputbox" [(ngModel)]="task">
+      </div>
+      <div class="col-md-1 label" style="max-width: 100px; padding: 0px">
+      Start Date
+      </div>
+      <div class="col-md-2">
+        <input type="date" class="datebox" [(ngModel)]="startDate">
+      </div>
+      <div class="col-md-1 label" style="max-width: 100px; padding: 0px">
+      End Date
+      </div>
+      <div class="col-md-2">
+        <input type="date" class="datebox" [(ngModel)]="startDate">
+      </div>
+    </div>

@@ -1,0 +1,97 @@
+<div class="row">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-9">
+    <h3>New Task</h3>
+    <br>
+    <div class="row">
+      <div class="col-md-3 label">
+        Task
+      </div>
+      <div class="col-md-6">
+        <input type="text" class="form-control inputbox" placeholder="Task Name" [(ngModel)]="task">
+      </div>
+      <div *ngIf="task.length == 0 && !initialLoad" class="col-md-3 label">
+        Task is mandatory
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-md-3 label">
+        Priority
+      </div>
+      <div class="col-md-6">
+        <div>
+          <p style="text-align:left; margin-bottom: 0px">0
+            <span style="float:right;">30</span>
+          </p>
+        </div>
+        <div class="slidecontainer label">
+          <input type="range" min="0" max="30" value="15" class="slider bglight" [(ngModel)]="priority">
+        </div>
+      </div>
+      <div class="col-md-3 label">
+        {{priority}}
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-md-3 label">
+        Parent Task
+      </div>
+      <div class="col-md-6">
+        <input type="text" class="form-control inputbox" placeholder="Parent Task Name" [(ngModel)]="parentTask">
+      </div>
+      <div *ngIf="invalidParent && !initialLoad" class="col-md-3 label">
+        Invalid Parent task
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-md-3 label">
+        Start Date
+      </div>
+      <div class="col-md-6">
+        <input type="date" class="datebox" [(ngModel)]="startDate">
+      </div>
+      <div *ngIf="startDate.length == 0 && !initialLoad" class="col-md-3 label">
+        Start date is mandatory
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-md-3 label">
+        End Date
+      </div>
+      <div class="col-md-6">
+        <input type="date" class="datebox" [(ngModel)]="endDate">
+      </div>
+      <div *ngIf="endDate.length == 0 && !initialLoad" class="col-md-3 label">
+        End date is mandatory
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-md-3 label">
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-6 aligncenter">
+            <button class="buttonstyle fontcolor" (click)="addTask()">Add Task</button>
+          </div>
+          <div class="col-md-6 aligncenter">
+            <button class="buttonstyle fontcolor" (click)="reset()">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
