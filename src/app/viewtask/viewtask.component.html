@@ -3,13 +3,13 @@
     Task
   </div>
   <div class="col-md-4">
-    <input type="text" class="form-control inputbox" placeholder="Task" [(ngModel)]="task">
+    <input type="text" class="form-control inputbox" placeholder="Task" [(ngModel)]="filtertask">
   </div>
   <div class="col-md-1 label" style="max-width: 100px; padding: 0px">
     Parent Task
   </div>
   <div class="col-md-5">
-    <input type="text" class="form-control inputbox" placeholder="Parent Task" [(ngModel)]="parentTask">
+    <input type="text" class="form-control inputbox" placeholder="Parent Task" [(ngModel)]="filterparentTask">
   </div>
 </div>
 <br>
@@ -19,31 +19,33 @@
     Priority From
   </div>
   <div class="col-md-1">
-    <input type="text" class="form-control inputbox" placeholder="0" [(ngModel)]="fromPriority">
+    <input type="text" class="form-control inputbox" placeholder="0" [(ngModel)]="filterfromPriority">
   </div>
   <div class="col-md-2 label">
     Priority To
   </div>
   <div class="col-md-1">
-    <input type="text" class="form-control inputbox" placeholder="30" [(ngModel)]="toPriority">
+    <input type="text" class="form-control inputbox" placeholder="30" [(ngModel)]="filtertoPriority">
   </div>
   <div class="col-md-1 label" style="max-width: 100px; padding: 0px">
     Start Date
   </div>
   <div class="col-md-2">
-    <input type="date" class="datebox" [(ngModel)]="startDate">
+    <input type="text" class="form-control inputbox" [(ngModel)]="filterstartDate">
   </div>
   <div class="col-md-1 label" style="max-width: 100px; padding: 0px">
     End Date
   </div>
   <div class="col-md-2">
-    <input type="date" class="datebox" [(ngModel)]="startDate">
+    <input type="text" class="form-control inputbox" [(ngModel)]="filterendDate">
   </div>
 </div>
 
 <div class="divider"></div>
 
-<div *ngFor="let task of tasks">
+<div *ngFor="let task of tasks | filter : filtertask : 'task' | filter:filterparentTask:'parentTask' |
+filter:filterstartDate:'startDate' | filter:filterendDate:'endDate' |
+filter:filterfromPriority:'frompriority' | filter:filtertoPriority:'topriority'">
 <div class="row" style="margin: 10px">
   <div class="col-md-3">
     <strong>Task</strong>
@@ -91,10 +93,10 @@
         {{task.priority}}
       </div>
       <div class="col-md-3">
-        {{task.start}}
+        {{task.startDate}}
       </div>
       <div class="col-md-2">
-        {{task.end}}
+        {{task.endDate}}
       </div>
       <div class="col-md-2">
         <button class="buttonstyle fontcolor">Edit</button>

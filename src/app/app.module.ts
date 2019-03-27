@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { AddtaskComponent } from './addtask/addtask.component';
 import { ViewtaskComponent } from './viewtask/viewtask.component';
 import { UpdatetaskComponent } from './updatetask/updatetask.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { PriorityFilterPipe } from './pipes/priorityfrom.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import { UpdatetaskComponent } from './updatetask/updatetask.component';
     HeaderComponent,
     AddtaskComponent,
     ViewtaskComponent,
-    UpdatetaskComponent
+    UpdatetaskComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
