@@ -68,3 +68,26 @@
     position: relative;
     transform: translateY(15%);
 }
+
+.divider {
+    height: 3px;
+    width: 100%;
+    background-color: #9A1750;
+}
+
+.header {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.selectbar {
+    text-align: center;
+    font-size: 1.5rem;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.noborder {
+    border-top: 0px;
+    border-bottom: 0px;
+}

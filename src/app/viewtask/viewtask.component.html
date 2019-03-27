@@ -1,42 +1,108 @@
 <div class="row" style="margin: 10px">
-      <div class="col-md-2 label" style="max-width: 125px;">
-      Task
-      </div>
-      <div class="col-md-4">
-        <input type="text" class="form-control inputbox" placeholder="Task" [(ngModel)]="task">
-      </div>
-      <div class="col-md-1 label" style="max-width: 100px; padding: 0px">
-      Parent Task
-      </div>
-      <div class="col-md-5">
-        <input type="text" class="form-control inputbox" placeholder="Parent Task" [(ngModel)]="parentTask">
-      </div>
-    </div>
-    <br>
+  <div class="col-md-2 label" style="max-width: 125px;">
+    Task
+  </div>
+  <div class="col-md-4">
+    <input type="text" class="form-control inputbox" placeholder="Task" [(ngModel)]="task">
+  </div>
+  <div class="col-md-1 label" style="max-width: 100px; padding: 0px">
+    Parent Task
+  </div>
+  <div class="col-md-5">
+    <input type="text" class="form-control inputbox" placeholder="Parent Task" [(ngModel)]="parentTask">
+  </div>
+</div>
+<br>
 
-    <div class="row" style="margin: 10px">
-      <div class="col-md-2 label" style="max-width: 125px;">
-      Priority From
+<div class="row" style="margin: 10px">
+  <div class="col-md-2 label" style="max-width: 125px;">
+    Priority From
+  </div>
+  <div class="col-md-1">
+    <input type="text" class="form-control inputbox" placeholder="0" [(ngModel)]="fromPriority">
+  </div>
+  <div class="col-md-2 label">
+    Priority To
+  </div>
+  <div class="col-md-1">
+    <input type="text" class="form-control inputbox" placeholder="30" [(ngModel)]="toPriority">
+  </div>
+  <div class="col-md-1 label" style="max-width: 100px; padding: 0px">
+    Start Date
+  </div>
+  <div class="col-md-2">
+    <input type="date" class="datebox" [(ngModel)]="startDate">
+  </div>
+  <div class="col-md-1 label" style="max-width: 100px; padding: 0px">
+    End Date
+  </div>
+  <div class="col-md-2">
+    <input type="date" class="datebox" [(ngModel)]="startDate">
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div *ngFor="let task of tasks">
+<div class="row" style="margin: 10px">
+  <div class="col-md-3">
+    <strong>Task</strong>
+  </div>
+  <div class="col-md-3">
+    <strong>Parent Task</strong>
+  </div>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-2">
+        <strong>Priority</strong>
       </div>
-      <div class="col-md-1">
-        <input type="text" class="form-control inputbox" [(ngModel)]="task">
+      <div class="col-md-3">
+        <strong>Start</strong>
       </div>
-      <div class="col-md-2 label">
-      Priority To
-      </div>
-      <div class="col-md-1">
-        <input type="text" class="form-control inputbox" [(ngModel)]="task">
-      </div>
-      <div class="col-md-1 label" style="max-width: 100px; padding: 0px">
-      Start Date
+      <div class="col-md-3">
+        <strong>End</strong>
       </div>
       <div class="col-md-2">
-        <input type="date" class="datebox" [(ngModel)]="startDate">
-      </div>
-      <div class="col-md-1 label" style="max-width: 100px; padding: 0px">
-      End Date
       </div>
       <div class="col-md-2">
-        <input type="date" class="datebox" [(ngModel)]="startDate">
       </div>
     </div>
+  </div>
+</div>
+
+<div class="row" style="margin: 10px">
+  <div class="col-md-3">
+    <div class="card fontcolor noborder bglight">
+      <div class="card-body">
+        {{task.task}}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card fontcolor noborder bglight">
+      <div class="card-body">
+        {{task.parentTask}}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-2">
+        {{task.priority}}
+      </div>
+      <div class="col-md-3">
+        {{task.start}}
+      </div>
+      <div class="col-md-2">
+        {{task.end}}
+      </div>
+      <div class="col-md-2">
+        <button class="buttonstyle fontcolor">Edit</button>
+      </div>
+      <div class="col-md-3">
+        <button class="buttonstyle fontcolor">End Task</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
