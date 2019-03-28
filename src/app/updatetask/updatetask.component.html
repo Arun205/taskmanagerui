@@ -8,10 +8,7 @@
         Task
       </div>
       <div class="col-md-6">
-        <input type="text" class="form-control inputbox" placeholder="Task Name" [(ngModel)]="task">
-      </div>
-      <div *ngIf="task.length == 0 && !initialLoad" class="col-md-3 label">
-        Task is mandatory
+        <input type="text" class="form-control inputbox" placeholder="Task Name" [(ngModel)]="task" disabled>
       </div>
     </div>
     <br>
@@ -54,7 +51,7 @@
         Start Date
       </div>
       <div class="col-md-6">
-        <input type="date" class="datebox" [(ngModel)]="startDate">
+        <input type="date" class="datebox" [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="startDate = $event">
       </div>
       <div *ngIf="startDate.length == 0 && !initialLoad" class="col-md-3 label">
         Start date is mandatory
@@ -67,7 +64,7 @@
         End Date
       </div>
       <div class="col-md-6">
-        <input type="date" class="datebox" [(ngModel)]="endDate">
+        <input type="date" class="datebox" [ngModel]="endDate | date:'yyyy-MM-dd'" (ngModelChange)="endDate = $event">
       </div>
       <div *ngIf="endDate.length == 0 && !initialLoad" class="col-md-3 label">
         End date is mandatory

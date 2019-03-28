@@ -10,9 +10,9 @@ import { EventEmitterService } from './../event-emitter.service';
 export class ViewtaskComponent implements OnInit {
 
   public tasks =  [
-        {'task': 'Task 1', 'parentTask': 'Parent Task 1', 'startDate': '2018/01/01', 'endDate':'2018/01/01', 'priority':10},
-        {'task': 'Task 2', 'parentTask': 'Parent Task 2', 'startDate': '2018/01/01', 'endDate':'2018/01/01', 'priority':10},
-        {'task': 'Task 3', 'parentTask': 'Parent Task 3', 'startDate': '2018/01/01', 'endDate':'2018/01/01', 'priority':10}
+        {'task': 'Task 1', 'parentTask': 'Parent Task 1', 'startDate': '01/01/2018', 'endDate':'01/01/2018', 'priority':10},
+        {'task': 'Task 2', 'parentTask': 'Parent Task 2', 'startDate': '01/01/2018', 'endDate':'01/01/2018', 'priority':10},
+        {'task': 'Task 3', 'parentTask': 'Parent Task 3', 'startDate': '01/01/2018', 'endDate':'01/01/2018', 'priority':10}
     ]
 
   constructor(private router: Router, private eventEmitterService: EventEmitterService) { }
@@ -21,7 +21,8 @@ export class ViewtaskComponent implements OnInit {
     this.eventEmitterService.eventEmitter.emit('viewTask');
   }
 
-  editTask() {
+  editTask(task) {
+    sessionStorage.setItem('task', JSON.stringify(task));
     this.router.navigateByUrl('/updatetask');
   }
 
