@@ -31,13 +31,13 @@
     Start Date
   </div>
   <div class="col-md-2">
-    <input type="text" class="form-control inputbox" [(ngModel)]="filterstartDate">
+    <input type="text" class="form-control inputbox" placeholder="Start Date" [(ngModel)]="filterstartDate">
   </div>
   <div class="col-md-1 label" style="max-width: 100px; padding: 0px">
     End Date
   </div>
   <div class="col-md-2">
-    <input type="text" class="form-control inputbox" [(ngModel)]="filterendDate">
+    <input type="text" class="form-control inputbox" placeholder="End Date" [(ngModel)]="filterendDate">
   </div>
 </div>
 
@@ -99,7 +99,7 @@ filter:filterfromPriority:'frompriority' | filter:filtertoPriority:'topriority'"
         {{task.endDate}}
       </div>
       <div class="col-md-2">
-        <button class="buttonstyle fontcolor">Edit</button>
+        <button class="buttonstyle fontcolor" (click)="editTask()">Edit</button>
       </div>
       <div class="col-md-3">
         <button class="buttonstyle fontcolor">End Task</button>

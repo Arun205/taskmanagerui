@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { EventEmitterService } from './../event-emitter.service';
 
 @Component({
   selector: 'app-viewtask',
@@ -13,9 +15,14 @@ export class ViewtaskComponent implements OnInit {
         {'task': 'Task 3', 'parentTask': 'Parent Task 3', 'startDate': '2018/01/01', 'endDate':'2018/01/01', 'priority':10}
     ]
 
-  constructor() { }
+  constructor(private router: Router, private eventEmitterService: EventEmitterService) { }
 
   ngOnInit() {
+    this.eventEmitterService.eventEmitter.emit('viewTask');
+  }
+
+  editTask() {
+    this.router.navigateByUrl('/updatetask');
   }
 
 }

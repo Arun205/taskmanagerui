@@ -9,7 +9,6 @@ import { AddtaskComponent } from './addtask/addtask.component';
 import { ViewtaskComponent } from './viewtask/viewtask.component';
 import { UpdatetaskComponent } from './updatetask/updatetask.component';
 import { FilterPipe } from './pipes/filter.pipe';
-import { PriorityFilterPipe } from './pipes/priorityfrom.pipe';
 
 @NgModule({
   declarations: [

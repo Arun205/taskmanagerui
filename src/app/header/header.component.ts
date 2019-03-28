@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { EventEmitterService } from './../event-emitter.service';
 
 @Component({
   selector: 'app-header',
@@ -7,19 +10,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  public addtask = true;
+  public addTask = false;
+  public updateTask = false;
+  public viewTask = false;
+  public eventSubscription: Subscription;
 
-  constructor() { }
+  constructor(private eventEmitterService: EventEmitterService, private router: Router) {
+    this.eventSubscription = eventEmitterService.eventEmitter.subscribe((currpage: any) => {
+      this.headerSelection(currpage);
+    });
+   }
 
   ngOnInit() {
+    this.headerSelection(window.location.pathname);
   }
 
-  selected(select) {
-    if (select == 'add') {
-      this.addtask = true;
-    } else {
-      this.addtask = false;
-    }
+  headerSelection(currpage) {
+    if (currpage == 'updateTask') {
+        this.updateTask = true;
+        this.addTask = false;
+        this.viewTask = false;
+      }
+      if (currpage == 'addTask') {
+        this.updateTask = false;
+        this.addTask = true;
+        this.viewTask = false;
+      }
+      if (currpage == 'viewTask') {
+        this.updateTask = false;
+        this.addTask = false;
+        this.viewTask = true;
+      }
   }
 
 }
