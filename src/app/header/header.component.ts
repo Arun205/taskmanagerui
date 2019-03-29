@@ -27,20 +27,20 @@ export class HeaderComponent implements OnInit {
 
   headerSelection(currpage) {
     if (currpage == 'updateTask') {
-        this.updateTask = true;
-        this.addTask = false;
-        this.viewTask = false;
+      this.updateTask = true;
+      this.addTask = false;
+      this.viewTask = false;
       }
-      if (currpage == 'addTask') {
-        this.updateTask = false;
-        this.addTask = true;
-        this.viewTask = false;
-      }
-      if (currpage == 'viewTask') {
-        this.updateTask = false;
-        this.addTask = false;
-        this.viewTask = true;
-      }
+    if (currpage == 'addTask') {
+      this.updateTask = false;
+      this.addTask = true;
+      this.viewTask = false;
+    }
+    if (currpage == 'viewTask') {
+      this.updateTask = false;
+      this.addTask = false;
+      this.viewTask = true;
+    }
   }
 
 }

@@ -6,7 +6,7 @@
 }
 
 .fontcolor {
-    color: #E3E2DF;
+    color: #E3E2DF !important;
 }
 
 .bgdarker {
@@ -18,7 +18,7 @@
 }
 
 .slider::-webkit-slider-thumb {
-    background: #9A1750; 
+    background: #9A1750;
 }
 
 .bglight {
@@ -69,6 +69,12 @@
     transform: translateY(15%);
 }
 
+.emptyMessage {
+    position: relative;
+    text-align: center;
+    transform: translateY(100%);
+}
+
 .divider {
     height: 3px;
     width: 100%;
@@ -92,6 +98,14 @@
     border-bottom: 0px;
 }
 
+.nomargin {
+    margin: 0px;
+}
+
+.nopadding {
+    padding: 0px;
+}
+
 .slider {
   -webkit-appearance: none;
   width: 100%;
@@ -113,4 +127,17 @@
 
 .slider:hover {
   opacity: 1;
+}
+
+.errorMessage {
+    font-size: 13px;
+    color: #EE4C7C;
+}
+
+.successMessage {
+    font-size: 12px;
+}
+
+.closeicon {
+    font-size: 19px;
 }

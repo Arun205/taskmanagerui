@@ -1,8 +1,7 @@
-<div class="row">
+<div class="row nomargin">
   <div class="col-md-2">
   </div>
-  <div class="col-md-9">
-    <h3>New Task</h3>
+  <div class="col-md-8">
     <br>
     <div class="row">
       <div class="col-md-3 label">
@@ -11,8 +10,19 @@
       <div class="col-md-6">
         <input type="text" class="form-control inputbox" placeholder="Task Name" [(ngModel)]="task">
       </div>
-      <div *ngIf="task.length == 0 && !initialLoad" class="col-md-3 label">
-        Task is mandatory
+      <div *ngIf="!initialLoad" class="col-md-3 label errorMessage">
+        <div *ngIf="invalidTask && task.length == 0">
+          Task is mandatory
+        </div>
+        <div *ngIf="duplicateTask">
+          Task already exists
+        </div>
+        <div *ngIf="taskMinLengthError">
+          Atleast 3 chars reqd
+        </div>
+        <div *ngIf="taskMaxLengthError">
+          Maximum of 50 chars
+        </div>
       </div>
     </div>
     <br>
@@ -31,7 +41,7 @@
           <input type="range" min="0" max="30" value="15" class="slider bglight" [(ngModel)]="priority">
         </div>
       </div>
-      <div class="col-md-3 label">
+      <div class="col-md-3 label successMessage">
         {{priority}}
       </div>
     </div>
@@ -44,8 +54,13 @@
       <div class="col-md-6">
         <input type="text" class="form-control inputbox" placeholder="Parent Task Name" [(ngModel)]="parentTask">
       </div>
-      <div *ngIf="invalidParent && !initialLoad" class="col-md-3 label">
-        Invalid Parent task
+      <div *ngIf="!initialLoad" class="col-md-3 label errorMessage">
+        <div *ngIf="invalidParent">
+          Parent task doesn't exist
+        </div>
+        <div *ngIf="sameTaskNParent">
+          Parent and task are same
+        </div>
       </div>
     </div>
     <br>
@@ -57,7 +72,7 @@
       <div class="col-md-6">
         <input type="date" class="datebox" [(ngModel)]="startDate">
       </div>
-      <div *ngIf="startDate.length == 0 && !initialLoad" class="col-md-3 label">
+      <div *ngIf="startDate.length == 0 && !initialLoad" class="col-md-3 label errorMessage">
         Start date is mandatory
       </div>
     </div>
@@ -70,8 +85,8 @@
       <div class="col-md-6">
         <input type="date" class="datebox" [(ngModel)]="endDate">
       </div>
-      <div *ngIf="endDate.length == 0 && !initialLoad" class="col-md-3 label">
-        End date is mandatory
+      <div *ngIf="invalidEndDate" class="col-md-3 label errorMessage">
+        End after start date
       </div>
     </div>
     <br>
@@ -90,8 +105,21 @@
         </div>
       </div>
     </div>
-
-  </div>
-  <div class="col-md-1">
+    <br>
+    <div *ngIf="successMessage" class="row">
+      <div class="col-md-3 label">
+      </div>
+      <div class="col-md-6">
+        <div class="alert alert-success alert-dismissible fade show successMessage" role="alert">
+          Task Added Successfully
+          <button type="button" class="close closeicon" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-3 label">
+      </div>
+    </div>
   </div>
 </div>
+

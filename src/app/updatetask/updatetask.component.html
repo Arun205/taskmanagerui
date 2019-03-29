@@ -1,93 +1,127 @@
-<div class="row">
-  <div class="col-md-2">
-  </div>
-  <div class="col-md-9">
-    <br>
-    <div class="row">
-      <div class="col-md-3 label">
-        Task
-      </div>
-      <div class="col-md-6">
-        <input type="text" class="form-control inputbox" placeholder="Task Name" [(ngModel)]="task" disabled>
-      </div>
+<div class="row nomargin">
+    <div class="col-md-2">
     </div>
-    <br>
-
-    <div class="row">
-      <div class="col-md-3 label">
-        Priority
-      </div>
-      <div class="col-md-6">
-        <div>
-          <p style="text-align:left; margin-bottom: 0px">0
-            <span style="float:right;">30</span>
-          </p>
+    <div class="col-md-8">
+      <br>
+      <div class="row">
+        <div class="col-md-3 label">
+          Task
         </div>
-        <div class="slidecontainer label">
-          <input type="range" min="0" max="30" value="15" class="slider bglight" [(ngModel)]="priority">
+        <div class="col-md-6">
+          <input type="text" class="form-control inputbox" placeholder="Task Name" [(ngModel)]="task" disabled>
+        </div>
+        <div class="col-md-3">
         </div>
       </div>
-      <div class="col-md-3 label">
-        {{priority}}
-      </div>
-    </div>
-    <br>
-
-    <div class="row">
-      <div class="col-md-3 label">
-        Parent Task
-      </div>
-      <div class="col-md-6">
-        <input type="text" class="form-control inputbox" placeholder="Parent Task Name" [(ngModel)]="parentTask">
-      </div>
-      <div *ngIf="invalidParent && !initialLoad" class="col-md-3 label">
-        Invalid Parent task
-      </div>
-    </div>
-    <br>
-
-    <div class="row">
-      <div class="col-md-3 label">
-        Start Date
-      </div>
-      <div class="col-md-6">
-        <input type="date" class="datebox" [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="startDate = $event">
-      </div>
-      <div *ngIf="startDate.length == 0 && !initialLoad" class="col-md-3 label">
-        Start date is mandatory
-      </div>
-    </div>
-    <br>
-
-    <div class="row">
-      <div class="col-md-3 label">
-        End Date
-      </div>
-      <div class="col-md-6">
-        <input type="date" class="datebox" [ngModel]="endDate | date:'yyyy-MM-dd'" (ngModelChange)="endDate = $event">
-      </div>
-      <div *ngIf="endDate.length == 0 && !initialLoad" class="col-md-3 label">
-        End date is mandatory
-      </div>
-    </div>
-    <br>
-
-    <div class="row">
-      <div class="col-md-3 label">
-      </div>
-      <div class="col-md-6">
-        <div class="row">
-          <div class="col-md-6 aligncenter">
-            <button class="buttonstyle fontcolor" (click)="update()">Update</button>
+      <br>
+  
+      <div class="row">
+        <div class="col-md-3 label">
+          Priority
+        </div>
+        <div class="col-md-6">
+          <div>
+            <p style="text-align:left; margin-bottom: 0px">0
+              <span style="float:right;">30</span>
+            </p>
           </div>
-          <div class="col-md-6 aligncenter">
-            <button class="buttonstyle fontcolor" (click)="cancel()">Cancel</button>
+          <div class="slidecontainer label">
+            <input type="range" min="0" max="30" value="15" class="slider bglight" [(ngModel)]="priority">
+          </div>
+        </div>
+        <div class="col-md-3 label successMessage">
+          {{priority}}
+        </div>
+      </div>
+      <br>
+  
+      <div class="row">
+        <div class="col-md-3 label">
+          Parent Task
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control inputbox" placeholder="Parent Task Name" [(ngModel)]="parentTask">
+        </div>
+        <div *ngIf="!initialLoad" class="col-md-3 label errorMessage">
+          <div *ngIf="invalidParent">
+            Parent task doesn't exist
+          </div>
+          <div *ngIf="sameTaskNParent">
+            Parent is same as Task
           </div>
         </div>
       </div>
+      <br>
+  
+      <div class="row">
+        <div class="col-md-3 label">
+          Start Date
+        </div>
+        <div class="col-md-6">
+          <input type="date" class="datebox" [(ngModel)]="startDate">
+        </div>
+        <div *ngIf="startDate.length == 0 && !initialLoad" class="col-md-3 label errorMessage">
+          Start date is mandatory
+        </div>
+      </div>
+      <br>
+  
+      <div class="row">
+        <div class="col-md-3 label">
+          End Date
+        </div>
+        <div class="col-md-6">
+          <input type="date" class="datebox" [(ngModel)]="endDate">
+        </div>
+        <div *ngIf="invalidEndDate" class="col-md-3 label errorMessage">
+          End after start date
+        </div>
+      </div>
+      <br>
+  
+      <div class="row">
+        <div class="col-md-3 label">
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-6 aligncenter">
+              <button class="buttonstyle fontcolor" (click)="update()">Update</button>
+            </div>
+            <div class="col-md-6 aligncenter">
+              <button class="buttonstyle fontcolor" (click)="cancel()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div *ngIf="successMessage" class="row">
+        <div class="col-md-3 label">
+        </div>
+        <div class="col-md-6">
+          <div class="alert alert-success alert-dismissible fade show successMessage" role="alert">
+            Task Updated Successfully
+            <button type="button" class="close closeicon" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+        <div class="col-md-3 label">
+        </div>
+      </div> 
+      <div *ngIf="noChangeError" class="row">
+        <div class="col-md-3 label">
+        </div>
+        <div class="col-md-6">
+          <div class="alert alert-danger alert-dismissible fade show successMessage" role="alert">
+            No change made to update
+            <button type="button" class="close closeicon" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+        <div class="col-md-3 label">
+        </div>
+      </div>
     </div>
-
   </div>
-  <div class="col-md-1">
-  </div>
-</div>
+    
